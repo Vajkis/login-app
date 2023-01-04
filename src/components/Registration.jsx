@@ -30,7 +30,9 @@ function Registration() {
                 <input type='text' ref={nameRef} />
                 <input type='email' ref={emailRef} />
                 <input type={type} ref={passRef} />
-                <button type='button' onClick={() => setType(t => t === 'password' ? 'text' : 'password')}>Show password</button>
+                <button type='button' onClick={() => setType(t => t === 'password' ? 'text' : 'password')}>
+                    {type === 'password' ? 'Show password' : 'Hide password'}
+                </button>
 
                 <label>
                     <span>Agree</span>
