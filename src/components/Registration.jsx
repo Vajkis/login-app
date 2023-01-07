@@ -52,7 +52,7 @@ function Registration() {
     }
 
     const passwordVisibility = () => {
-        setType(t => t === 'password' ? 'text' : 'password')
+        setType(t => t === 'password' ? 'text' : 'password');
     }
 
     return (
