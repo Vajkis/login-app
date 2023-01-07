@@ -51,6 +51,10 @@ function Registration() {
         }
     }
 
+    const passwordVisibility = () => {
+        setType(t => t === 'password' ? 'text' : 'password')
+    }
+
     return (
         <>
             <h1>Registration</h1>
@@ -61,7 +65,7 @@ function Registration() {
                 <input type='text' ref={nameRef} />
                 <input type='email' ref={emailRef} />
                 <input type={type} ref={passRef} />
-                <button type='button' onClick={() => setType(t => t === 'password' ? 'text' : 'password')}>
+                <button type='button' onClick={passwordVisibility}>
                     {type === 'password' ? 'Show password' : 'Hide password'}
                 </button>
 
