@@ -10,12 +10,10 @@ function Registration() {
 
     const [type, setType] = useState('password');
     const [isChecked, setIsCheched] = useState(false);
-
     const [notificationsList, setNotificationsList] = useState([]);
 
     const registration = e => {
         e.preventDefault();
-
         setNotificationsList([]);
 
         const name = inputsValidation(nameRef.current.value, 'name');
