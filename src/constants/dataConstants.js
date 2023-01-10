@@ -1,0 +1,1 @@
+export const registration_const = 'registration_const';
