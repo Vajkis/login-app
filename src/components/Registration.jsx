@@ -84,8 +84,8 @@ function Registration() {
                 </button>
 
                 <label>
-                    <span>Agree</span>
                     <input type='checkbox' checked={isChecked} onChange={e => setIsCheched(e.target.checked)} />
+                    <span>Agree that password show will up in local storage.</span>
                 </label>
 
                 <button>Sing up</button>
