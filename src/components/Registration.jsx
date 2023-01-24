@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { registration_action } from "../actions/dataActions";
 import inputsValidation from "../functions/inputsValidations";
 import DataContext from "./DataContext";
@@ -93,7 +94,7 @@ function Registration() {
 
             <article>
                 <h2>Have account?</h2>
-                <button>Sing in</button>
+                <Link to='/login'>Sing in</Link>
             </article>
         </>
     );
