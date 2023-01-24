@@ -1,13 +1,12 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { registration_action } from "../actions/dataActions";
-import getId from "../functions/getId";
 import inputsValidation from "../functions/inputsValidations";
 import DataContext from "./DataContext";
 import Notifications from "./Notifications";
 
 function Registration() {
 
-    const { dispachData } = useContext(DataContext);
+    const { data, dispachData } = useContext(DataContext);
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -30,12 +29,11 @@ function Registration() {
         const isPass = !pass.error;
 
         if (isName && isEmail && isPass & isChecked) {
-
             dispachData(registration_action({
                 name: name.value,
                 email: email.value,
                 pass: pass.value
-            }))
+            }));
 
             nameRef.current.value = '';
             emailRef.current.value = '';
@@ -59,6 +57,13 @@ function Registration() {
             }
         }
     }
+
+    useEffect(() => {
+        if (data) {
+            const notifications = data[1];
+            setNotificationsList(notifications);
+        }
+    }, [data]);
 
     const passwordVisibility = () => {
         setType(t => t === 'password' ? 'text' : 'password');

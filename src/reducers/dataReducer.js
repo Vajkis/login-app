@@ -4,18 +4,21 @@ import updateData from "../functions/updateData";
 
 function data_reducer(_, action) {
 
-    let newState = [JSON.parse(localStorage.getItem('usersData')) || [], []];
+    let newState = [{}, []];
+    let data = JSON.parse(localStorage.getItem('usersData')) || [];
 
     switch (action.type) {
         case registration_const:
-            console.log({ newState, action });
-            if (newState[0]) {
-                if (!newState[0].some(u => u.email === action.payload.email)) {
-                    newState[0] = [...newState[0], { ...action.payload, id: getId() }];
-                    updateData(newState[0]);
+            console.log(data);
+            if (data) {
+                if (!data.some(u => u.email === action.payload.email)) {
+                    newState[0] = { ...action.payload, id: getId(), registrationDate: Date.now() };
+                    data = [...data, newState[0]];
+                    updateData(data);
+                } else {
+                    newState[1] = ['user already exist'];
                 }
             }
-
             break;
         default:
     }
